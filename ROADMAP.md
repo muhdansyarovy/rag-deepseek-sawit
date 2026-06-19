@@ -186,12 +186,13 @@ Bukan masalah besar. Fokus ke dataset.
 
 | Komponen | Status |
 |----------|--------|
-| RAG corpus (5.755 file) | ✅ Siap |
-| ChromaDB + ONNX embedding | ✅ Berfungsi |
-| FastAPI server | ✅ Siap di ROG |
-| DeepSeek API integration | ❌ Fase 1 |
-| OpenCode-batch (current) | ❌ Akan diganti |
-| Qwen 3.6 27B test | ❌ Fase 2 |
+| RAG corpus (5.741 file sawit) | ✅ Bersih (16 non-sawit dipisah ke Non Sawit/) |
+| ChromaDB + ONNX embedding | ✅ Berfungsi (203k chunks, rebuild clean) |
+| OPIN UI (chatbot) | ✅ Live di :8000 |
+| FastAPI server (systemd) | ✅ Auto-start di ROG |
+| DeepSeek API integration | ✅ Fase 1 selesai |
+| OpenCode-batch | ❌ Diganti |
+| Qwen 3.6 27B test | ❌ Fase 2 (next) |
 | Dataset 10k-20k QA | ❌ Fase 3 |
 | Fine-tune | ❌ Fase 4 |
 | Produk komersial | ❌ Fase 5 |
