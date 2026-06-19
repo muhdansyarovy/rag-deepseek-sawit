@@ -2,7 +2,7 @@
 Cara pakai:
     python bulk-import.py ~/RAG\ Corpus/
 
-Folder Non Sawit akan otomatis dilewati.
+Folder Non Sawit dan file ._ akan otomatis dilewati.
 """
 import sys, os, glob
 sys.path.insert(0, os.path.dirname(__file__))
@@ -25,8 +25,11 @@ def import_dir(root_dir):
             dirnames.clear()
             continue
         for f in filenames:
-            if f.endswith(".md"):
-                files.append(os.path.join(dirpath, f))
+            if not f.endswith(".md"):
+                continue
+            if f.startswith("._"):
+                continue
+            files.append(os.path.join(dirpath, f))
     
     files.sort()
     print(f"Menemukan {len(files)} file .md")
