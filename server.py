@@ -1,20 +1,25 @@
-"""server.py — API Server untuk Sawit AI RAG
+"""server.py — API Server untuk OPIN — Sawit AI RAG
 Jalankan: uvicorn server:app --host 0.0.0.0 --port 8000
 
 Endpoint:
-    POST /ask        -> tanya
-    POST /knowledge  -> upload dokumen
-    GET  /health     -> status
-    GET  /stats      -> statistik DB
-    GET  /models     -> daftar model
+    GET  /            -> UI OPIN
+    POST /ask         -> tanya
+    POST /knowledge   -> upload dokumen
+    GET  /health      -> status
+    GET  /stats       -> statistik DB
+    GET  /models      -> daftar model
 """
 import os
 import tempfile
 from fastapi import FastAPI, UploadFile, File
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from rag import ask, add_knowledge, get_collection, DEEPSEEK_MODEL
 
-app = FastAPI(title="Sawit AI RAG API", version="2.0.0")
+STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+
+app = FastAPI(title="OPIN — Sawit AI RAG API", version="2.0.0")
+app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
 
 class AskRequest(BaseModel):
     question: str
