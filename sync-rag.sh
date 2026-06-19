@@ -32,6 +32,8 @@ if rsync -avz --delete \
   "$CORPUS_DEST" \
   --exclude=".DS_Store" \
   --exclude="sync-rag.sh" \
+  --exclude="Non Sawit/" \
+  --exclude="Non-Sawit/" \
   >> "$LOG_FILE" 2>&1; then
   echo "[$TIMESTAMP] ✅ Sync selesai"
 else
