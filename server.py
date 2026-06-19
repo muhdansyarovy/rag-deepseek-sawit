@@ -12,14 +12,18 @@ Endpoint:
 import os
 import tempfile
 from fastapi import FastAPI, UploadFile, File
-from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from rag import ask, add_knowledge, get_collection, DEEPSEEK_MODEL
 
-STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+BASE_DIR = os.path.dirname(__file__)
+STATIC_DIR = os.path.join(BASE_DIR, "static")
 
 app = FastAPI(title="OPIN — Sawit AI RAG API", version="2.0.0")
-app.mount("/", StaticFiles(directory=STATIC_DIR, html=True), name="static")
+
+@app.get("/")
+def index():
+    return FileResponse(os.path.join(STATIC_DIR, "index.html"))
 
 class AskRequest(BaseModel):
     question: str
